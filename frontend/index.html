@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bariq | ساعات أنيقة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Main Website -->
+    <div id="main-website">
+        <!-- Header -->
+        <header>
+            <div class="container header-container">
+                <div class="logo-container">
+                    <a href="index.html" class="logo"> BARIQ </a>
+                </div>
+
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#" class="active">الرئيسية</a></li>
+                        <li><a href="#products">المتجر</a></li>
+                    </ul>
+                </nav>
+
+                <div class="user-actions">
+                    <a href="#" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+
+                    <a href="#" class="admin-btn" id="adminLoginBtn">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#products"><i class="fas fa-shopping-bag"></i> المتجر</a></li>
+                <li><a href="#contact"><i class="fas fa-phone"></i> تواصل معنا</a></li>
+            </ul>
+            <a href="#" class="admin-btn" id="adminLoginBtnMobile">لوحة التحكم</a>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1> ساعات بريق </h1>
+                <p>تصميم كلاسيكي خالد يناسب كل المناسبات</p>
+                <a href="#products" class="shop-btn">تسوق الآن</a>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-products" id="products">
+            <div class="container">
+                <div class="section-title">
+                    <h2>منتجات مميزة</h2>
+                </div>
+
+                <div class="products-grid" id="productsContainer">
+                    <!-- المنتجات سيتم إضافتها ديناميكياً -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Page -->
+        <section class="checkout-page" id="checkoutPage">
+            <div class="container">
+                <h2 class="checkout-title">إتمام الشراء</h2>
+                <div class="checkout-container">
+                    <div class="checkout-form-container">
+                        <h3>معلومات العميل</h3>
+                        <form id="checkoutForm">
+                            <div class="form-group">
+                                <label for="customerName">الاسم بالكامل *</label>
+                                <input type="text" id="customerName" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone1">رقم الهاتف الأول *</label>
+                                    <input type="tel" id="phone1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone2">رقم الهاتف الثاني (اختياري)</label>
+                                    <input type="tel" id="phone2">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">البريد الإلكتروني *</label>
+                                <input type="email" id="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">العنوان بالتفصيل *</label>
+                                <textarea id="address" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">المدينة *</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="discountCode">كود الخصم</label>
+                                    <input type="text" id="discountCode" placeholder="أدخل كود الخصم إن وجد">
+                                    <button type="button" id="applyDiscountBtn">تطبيق</button>
+                                    <div id="discountMessage"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="additionalInfo">معلومات إضافية (اختياري)</label>
+                                <textarea id="additionalInfo" rows="3"
+                                    placeholder="ملاحظات حول الطلب، تعليمات للتوصيل، إلخ..."></textarea>
+                            </div>
+
+                            <div class="contact-message">
+                                <i class="fas fa-phone" style="margin-left: 5px;"></i>
+                                <strong>سيتم التواصل معك في أقرب وقت</strong>
+                                <p>سيتصل بك فريقنا لتأكيد طلبك وتفاصيل الدفع خلال 24 ساعة</p>
+                            </div>
+
+                            <button type="submit" class="checkout-btn" id="completeOrderBtn">إتمام الطلب</button>
+                            <a href="#" class="back-to-cart" id="backToCart">العودة إلى السلة</a>
+                        </form>
+                    </div>
+
+                    <div class="order-summary">
+                        <h3>ملخص الطلب</h3>
+                        <div class="order-items" id="orderSummaryItems">
+                            <!-- عناصر الطلب سيتم إضافتها ديناميكياً -->
+                        </div>
+                        <div class="discount-summary" id="discountSummary" style="display: none;">
+                            <div class="discount-line">
+                                <span>الخصم:</span>
+                                <span id="discountAmount">ج.م 0</span>
+                            </div>
+                            <div class="subtotal-line">
+                                <span>الإجمالي بعد الخصم:</span>
+                                <span id="subtotalAfterDiscount">ج.م 0</span>
+                            </div>
+                        </div>
+                        <div class="order-total">
+                            <span>الإجمالي:</span>
+                            <span id="orderTotal">ج.م 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>بريق</h3>
+                        <p>متجر بريق للساعات الفاخرة، نقدم لك أفضل التصاميم الكلاسيكية والعصرية من ساعات اليد الفاخرة.
+                        </p>
+                        <div class="social-icons">
+                            <a href="https://www.tiktok.com/@bariq_58?_r=1&_t=ZS-91wSiNwefn5"><i
+                                    class="fab fa-tiktok"></i></a>
+                            <a href="https://www.instagram.com/bariq.57?igsh=OXZtdTFieGNsNHNm"><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>روابط سريعة</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">الرئيسية</a></li>
+                            <li><a href="#products">المتجر</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>معلومات الاتصال</h3>
+                        <div class="social-icons">
+                            <a href="https://wa.me/201110547870?text=مرحبا بك في بريق " target="_blank"
+                                class="fab fa-whatsapp">
+
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>جميع الحقوق محفوظة &copy; 2025 بريق</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="quick-view-content">
+            <div class="quick-view-header">
+                <h2 id="quickViewTitle">تفاصيل المنتج</h2>
+                <button class="close-quick-view" id="closeQuickView">&times;</button>
+            </div>
+            <div class="quick-view-body">
+                <div class="quick-view-image">
+                    <img id="quickViewImage" src="" alt="Product Image">
+                </div>
+                <div class="quick-view-details">
+                    <h3 id="quickViewProductName"></h3>
+                    <div class="quick-view-price" id="quickViewPrice"></div>
+                    <div class="quick-view-description" id="quickViewDescription"></div>
+                    <div class="quick-view-features">
+                        <h4>مميزات المنتج:</h4>
+                        <ul id="quickViewFeatures"></ul>
+                    </div>
+                    <div class="quick-view-actions">
+                        <button class="btn order-now-btn" id="orderNowBtn">اطلب الآن</button>
+                        <button class="btn add-to-cart-btn" id="addToCartFromQuickView">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>سلة التسوق</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- عناصر السلة سيتم إضافتها ديناميكياً -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">ج.م 0</span>
+            </div>
+            <div class="cart-buttons">
+                <button class="btn checkout-modal-btn" id="checkoutModalBtn">إتمام الشراء</button>
+                <a href="#" class="btn view-cart-btn">عرض السلة</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>تسجيل الدخول</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" required>
+                </div>
+
+                <button type="submit" class="submit-btn">تسجيل الدخول</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

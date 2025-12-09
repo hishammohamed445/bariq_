@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bariq | لوحة التحكم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <header class="admin-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html"
+                        style="color: #f7d85b; font-family: 'Times New Roman', serif; font-size: 24px; letter-spacing: 3px;">BARIQ</a>
+                </div>
+
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="#" class="active" data-tab="dashboard">لوحة التحكم</a></li>
+                        <li><a href="#" data-tab="products">المنتجات</a></li>
+                        <li><a href="#" data-tab="orders">الطلبات</a></li>
+                        <li><a href="#" data-tab="discounts">الخصومات</a></li>
+                    </ul>
+                </nav>
+
+                <a href="index.html" class="logout-btn" id="logoutBtn">العودة </a>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div class="container">
+                <!-- Dashboard Tab -->
+                <div class="dashboard-tab" id="dashboardTab">
+                    <h2 class="dashboard-title">لوحة التحكم</h2>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="ordersCount">0</h3>
+                                <p>طلبات جديدة</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="customersCount">0</h3>
+                                <p>عملاء نشطين</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalSales">ج.م 0</h3>
+                                <p>إجمالي المبيعات</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="productsCount">0</h3>
+                                <p>منتجات في المخزون</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <div class="section-header">
+                            <h3>أحدث الطلبات</h3>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>رقم الطلب</th>
+                                        <th>العميل</th>
+                                        <th>الهاتف</th>
+                                        <th>المدينة</th>
+                                        <th>المبلغ</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentOrders">
+                                    <!-- الطلبات سيتم إضافتها ديناميكياً -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Tab -->
+                <div class="dashboard-tab" id="productsTab" style="display: none;">
+                    <h2 class="dashboard-title">
+                        إدارة المنتجات
+                        <button class="add-product-btn" id="addProductBtn">إضافة منتج جديد</button>
+                    </h2>
+
+                    <div class="dashboard-section">
+                        <div class="section-header">
+                            <h3>قائمة المنتجات</h3>
+                            <div class="section-actions">
+                                <button class="action-btn" id="resetProductsBtn">استعادة المنتجات الافتراضية</button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>الصورة</th>
+                                        <th>اسم المنتج</th>
+                                        <th>السعر</th>
+                                        <th>الخصم</th>
+                                        <th>المخزون</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTableBody">
+                                    <!-- المنتجات سيتم إضافتها ديناميكياً -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Tab -->
+                <div class="dashboard-tab" id="ordersTab" style="display: none;">
+                    <h2 class="dashboard-title">إدارة الطلبات</h2>
+
+                    <div class="dashboard-section">
+                        <div class="section-header">
+                            <h3>جميع الطلبات</h3>
+                            <div class="section-actions">
+                                <button class="action-btn complete" id="markAllComplete">تعيين الكل كمكتمل</button>
+                                <button class="action-btn delete" id="clearAllOrders">حذف جميع الطلبات</button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>رقم الطلب</th>
+                                        <th>العميل</th>
+                                        <th>الهاتف</th>
+                                        <th>العنوان</th>
+                                        <th>التاريخ</th>
+                                        <th>المبلغ</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTableBody">
+                                    <!-- الطلبات سيتم إضافتها ديناميكياً -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discounts Tab -->
+                <div class="dashboard-tab" id="discountsTab" style="display: none;">
+                    <h2 class="dashboard-title">
+                        إدارة الخصومات
+                        <button class="add-product-btn" id="addDiscountBtn">إضافة خصم جديد</button>
+                    </h2>
+
+                    <div class="dashboard-section">
+                        <div class="section-header">
+                            <h3>الخصومات النشطة</h3>
+                            <div class="section-actions">
+                                <button class="action-btn" id="resetDiscountsBtn">استعادة الخصومات الافتراضية</button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>كود الخصم</th>
+                                        <th>نسبة الخصم</th>
+                                        <th>تاريخ البداية</th>
+                                        <th>تاريخ النهاية</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="discountsTableBody">
+                                    <!-- الخصومات سيتم إضافتها ديناميكياً -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="form-modal" id="orderDetailsModal">
+        <div class="form-modal-content order-details-modal">
+            <div class="modal-header">
+                <h2 id="orderDetailsTitle">تفاصيل الطلب #</h2>
+                <button class="close-modal" id="closeOrderDetails">&times;</button>
+            </div>
+            <div class="order-details-container">
+                <div class="order-customer-info">
+                    <h3>معلومات العميل</h3>
+                    <div class="order-info-group">
+                        <div class="order-info-label">الاسم الكامل:</div>
+                        <div class="order-info-value" id="orderCustomerName"></div>
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">رقم الهاتف 1:</div>
+                        <div class="order-info-value" id="orderPhone1"></div>
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">رقم الهاتف 2:</div>
+                        <div class="order-info-value" id="orderPhone2"></div>
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">البريد الإلكتروني:</div>
+                        <div class="order-info-value" id="orderEmail"></div>
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">العنوان:</div>
+                        <div class="order-info-value" id="orderAddress"></div>
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">المدينة:</div>
+                        <div class="order-info-value" id="orderCity"></div>
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">معلومات إضافية:</div>
+                        <div class="order-info-value" id="orderAdditionalInfo"></div>
+                    </div>
+                    <div class="order-info-group" id="orderDiscountInfo" style="display: none;">
+                        <div class="order-info-label">كود الخصم:</div>
+                        <div class="order-info-value" id="orderDiscountCode"
+                            style="color: var(--accent-color); font-weight: bold;"></div>
+                    </div>
+                </div>
+
+                <div class="order-products-info">
+                    <h3>المنتجات المطلوبة</h3>
+                    <div class="order-products-list" id="orderProductsList">
+                        <!-- المنتجات سيتم إضافتها ديناميكياً -->
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">تاريخ الطلب:</div>
+                        <div class="order-info-value" id="orderDate"></div>
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">حالة الطلب:</div>
+                        <div class="order-info-value">
+                            <span class="status" id="orderStatus"></span>
+                        </div>
+                    </div>
+                    <div id="discountDetails"
+                        style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 5px; display: none;">
+                        <!-- تفاصيل الخصم ستظهر هنا -->
+                    </div>
+                    <div class="order-info-group">
+                        <div class="order-info-label">الإجمالي:</div>
+                        <div class="order-info-value" id="orderTotalAmount"
+                            style="font-size: 24px; color: var(--secondary-color); font-weight: bold;"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 30px; display: flex; gap: 10px;">
+                <button class="action-btn complete" id="markOrderComplete">تعيين كمكتمل</button>
+                <button class="action-btn delete" id="deleteOrderBtn">حذف الطلب</button>
+                <button class="action-btn" id="printOrderBtn">طباعة الطلب</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="form-modal" id="productFormModal">
+        <div class="form-modal-content">
+            <div class="modal-header">
+                <h2 id="productFormTitle">إضافة منتج جديد</h2>
+                <button class="close-modal" id="closeProductForm">&times;</button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productName">اسم المنتج *</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productCategory">الفئة *</label>
+                        <select id="productCategory" required>
+                            <option value="">اختر الفئة</option>
+                            <option value="رجالية">رجالية</option>
+                            <option value="نسائية">نسائية</option>
+                            <option value="رياضية">رياضية</option>
+                            <option value="كلاسيكية">كلاسيكية</option>
+                            <option value="فاخرة">فاخرة</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productPrice">السعر (ج.م) *</label>
+                        <input type="number" id="productPrice" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDiscount">نسبة الخصم (%)</label>
+                        <input type="number" id="productDiscount" min="0" max="100" step="1" value="0">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productStock">الكمية في المخزون *</label>
+                        <input type="number" id="productStock" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productStatus">الحالة *</label>
+                        <select id="productStatus" required>
+                            <option value="in-stock">متوفر</option>
+                            <option value="out-of-stock">نفذ من المخزون</option>
+                            <option value="on-sale">في عرض</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productImage">رابط الصورة *</label>
+                    <input type="text" id="productImage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productDescription">الوصف *</label>
+                    <textarea id="productDescription" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="productFeatures">المميزات (افصل بينها بفاصلة)</label>
+                    <textarea id="productFeatures" rows="2"
+                        placeholder="مقاومة للماء, شاشة لمس, بطارية طويلة المدى"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="saveProductBtn">حفظ المنتج</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Discount Modal -->
+    <div class="form-modal" id="discountFormModal">
+        <div class="form-modal-content">
+            <div class="modal-header">
+                <h2 id="discountFormTitle">إضافة خصم جديد</h2>
+                <button class="close-modal" id="closeDiscountForm">&times;</button>
+            </div>
+            <form id="discountForm">
+                <input type="hidden" id="discountId">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="discountCode">كود الخصم *</label>
+                        <input type="text" id="discountCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="discountPercent">نسبة الخصم (%) *</label>
+                        <input type="number" id="discountPercent" min="1" max="100" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="discountStartDate">تاريخ البداية *</label>
+                        <input type="date" id="discountStartDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="discountEndDate">تاريخ النهاية *</label>
+                        <input type="date" id="discountEndDate" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="discountStatus">الحالة *</label>
+                    <select id="discountStatus" required>
+                        <option value="active">نشط</option>
+                        <option value="inactive">غير نشط</option>
+                        <option value="expired">منتهي</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn" id="saveDiscountBtn">حفظ الخصم</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+    
+</body>
+
+</html>

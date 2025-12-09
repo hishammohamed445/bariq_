@@ -1,0 +1,72 @@
+[
+  {
+    "id": 3,
+    "name": "باريك الكلاسيكية",
+    "description": "ساعة كلاسيكية بتصميم رفيع وأنيق للرجال",
+    "price": 11500,
+    "image": "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    "category": "رجالية",
+    "stock": 0,
+    "status": "out-of-stock",
+    "features": [
+      "تصميم رفيع وأنيق",
+      "سوار جلد طبيعي",
+      "ساعة سويسرية",
+      "شاشة عرض تاريخ"
+    ],
+    "badge": "sold-out"
+  },
+  {
+    "id": 4,
+    "name": "باريك الرياضية",
+    "description": "ساعة رياضية متعددة الوظائف مقاومة للماء",
+    "price": 8500,
+    "image": "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    "category": "رياضية",
+    "stock": 22,
+    "status": "in-stock",
+    "features": [
+      "مقاومة للماء حتى 100 متر",
+      "عداد الخطى",
+      "مؤقت",
+      "شاشة لمس"
+    ],
+    "badge": "new"
+  },
+  {
+    "id": 5,
+    "name": "باريك النسائية",
+    "description": "ساعة نسائية فاخرة بتصميم أنيق ومميز",
+    "price": 7800,
+    "originalPrice": 9000,
+    "discount": 13,
+    "image": "https://images.unsplash.com/photo-1548169874-53e85f753f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    "category": "نسائية",
+    "stock": 12,
+    "status": "in-stock",
+    "features": [
+      "تصميم أنيق للنساء",
+      "ألماس مرصع",
+      "سوار فضي",
+      "مقاومة للماء"
+    ],
+    "badge": "sale"
+  },
+  {
+    "id": 6,
+    "name": "باريك الحديثة",
+    "description": "ساعة ذكية بتقنيات حديثة وشاشة لمس",
+    "price": 14500,
+    "image": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    "category": "رياضية",
+    "stock": 18,
+    "status": "in-stock",
+    "features": [
+      "شاشة لمس",
+      "تتبع اللياقة",
+      "مقاومة للماء",
+      "بطارية 7 أيام"
+    ],
+    "badge": "new"
+  }
+]
