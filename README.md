@@ -60,7 +60,7 @@ Use the `Authorization: Bearer <ADMIN_TOKEN>` header for endpoints marked with *
 ## Deploying to Vercel
 
 1. **Create a Vercel project** pointing to this repository.
-2. **Add a Vercel Postgres database** (from the Integrations tab) and expose the generated credentials (`POSTGRES_URL`, `POSTGRES_URL_NON_POOLING`, `POSTGRES_PRISMA_URL`). The API automatically switches to Postgres when these variables are present; otherwise it falls back to local JSON files (not persistent on Vercel).
+2. **Add a Vercel Postgres database** (from the Integrations tab) and expose the generated credentials (`POSTGRES_URL`, `POSTGRES_URL_NON_POOLING`, `POSTGRES_PRISMA_URL`, `POSTGRES_PRISMA_URL_NON_POOLING`, `POSTGRES_URL_NO_SSL`, or a generic `DATABASE_URL`). The API automatically switches to Postgres when any of these variables are present; otherwise it falls back to local JSON files (not persistent on Vercel).
 3. **Configure additional environment variables** in the Vercel dashboard:
    - `ADMIN_USER`, `ADMIN_PASSWORD`, `ADMIN_TOKEN`
 4. **Deploy**: `vercel --prod` (or let the GitHub integration build). Static files from `frontend/` are served via `vercel.json`, and the REST API runs through the shared Express router exported in `api/index.js`.

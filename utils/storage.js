@@ -29,7 +29,7 @@ const safeWriteJSON = (filePath, data) => {
         return true;
     } catch (error) {
         console.error(`Failed to write ${filePath}:`, error);
-        return false;
+        throw error;
     }
 };
 

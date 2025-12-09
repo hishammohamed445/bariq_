@@ -8,15 +8,22 @@ const {
     ensureFileExists
 } = require("./storage");
 
+const POSTGRES_ENV_KEYS = [
+    "POSTGRES_URL",
+    "POSTGRES_URL_NON_POOLING",
+    "POSTGRES_PRISMA_URL",
+    "POSTGRES_PRISMA_URL_NON_POOLING",
+    "POSTGRES_URL_NO_SSL",
+    "DATABASE_URL"
+];
+
+const hasPostgresConfig = POSTGRES_ENV_KEYS.some((key) => Boolean(process.env[key]));
+
 let sql;
 let usePostgres = false;
 try {
     ({ sql } = require("@vercel/postgres"));
-    usePostgres = Boolean(
-        process.env.POSTGRES_URL ||
-        process.env.POSTGRES_PRISMA_URL ||
-        process.env.DATABASE_URL
-    );
+    usePostgres = hasPostgresConfig;
 } catch (error) {
     usePostgres = false;
 }
