@@ -10,6 +10,7 @@ A simple Node.js + Express storefront with a static frontend and REST API for ma
    ```
 2. **Configure environment**
    - Copy `.env.example` to `.env` and adjust values as needed.
+   - For production/Vercel deploys, provision a Vercel Postgres database (or supply compatible `POSTGRES_URL` variables) so products/orders persist between requests.
 3. **Run in development**
    ```bash
    npm start
@@ -55,3 +56,12 @@ Use the `Authorization: Bearer <ADMIN_TOKEN>` header for endpoints marked with *
 
 - For production, wire the storage layer to a real database and tighten authentication (use JWTs, HTTPS, etc.).
 - The current setup is aimed at local demos and rapid prototyping.
+
+## Deploying to Vercel
+
+1. **Create a Vercel project** pointing to this repository.
+2. **Add a Vercel Postgres database** (from the Integrations tab) and expose the generated credentials (`POSTGRES_URL`, `POSTGRES_URL_NON_POOLING`, `POSTGRES_PRISMA_URL`). The API automatically switches to Postgres when these variables are present; otherwise it falls back to local JSON files (not persistent on Vercel).
+3. **Configure additional environment variables** in the Vercel dashboard:
+   - `ADMIN_USER`, `ADMIN_PASSWORD`, `ADMIN_TOKEN`
+4. **Deploy**: `vercel --prod` (or let the GitHub integration build). Static files from `frontend/` are served via `vercel.json`, and the REST API runs through the shared Express router exported in `api/index.js`.
+5. **Verify** by opening the assigned Vercel URL, logging in via the modal, and ensuring the admin dashboard shows Postgres-backed data.
